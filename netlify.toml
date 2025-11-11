@@ -1,10 +1,11 @@
 ﻿[build]
   command = "npm run build"
-  publish = ".next"
+  publish = "dist"
 
-[[plugins]]
-  package = "@netlify/next-runtime"
+# (optionnel) forcer Node si besoin côté CI
+[build.environment]
+  NODE_VERSION = "18"
 
-# Contexte preview (utilisé par le Visual Editor)
+# Préview (utilisé par Visual Editor)
 [context.preview]
   command = "npm run build"
