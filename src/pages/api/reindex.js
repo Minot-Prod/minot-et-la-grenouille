@@ -1,11 +1,9 @@
-import { index } from '../../utils/indexer';
+﻿export const prerender = false;
 
-export default async function handler(req, res) {
-    try {
-        const result = await index();
-        res.status(200).send({ result });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send({ error: 'failed to fetch data' });
-    }
+export async function GET() {
+  return new Response("OK", { status: 200 });
+}
+
+export default async function () {
+  return new Response("OK", { status: 200 });
 }
