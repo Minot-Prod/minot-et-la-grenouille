@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "npx stackbit dev",
     "astro": "astro"
   },
   "dependencies": {
@@ -18,7 +18,9 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
+    "@netlify/next-runtime": "^5.0.0-alpha.25",
     "@netlify/plugin-visual-editor": "^1.4.1",
+    "@stackbit/cli": "^0.3.133",
     "@stackbit/cms-git": "^1.0.35",
     "@stackbit/types": "^2.1.14"
   }

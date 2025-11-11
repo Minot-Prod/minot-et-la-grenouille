@@ -1,3 +1,10 @@
-[build]
+﻿[build]
   command = "npm run build"
   publish = ".next"
+
+[[plugins]]
+  package = "@netlify/next-runtime"
+
+# Contexte preview (utilisé par le Visual Editor)
+[context.preview]
+  command = "npm run build"
