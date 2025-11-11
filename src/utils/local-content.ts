@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+﻿import * as fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
 import frontmatter from 'front-matter';
@@ -108,3 +108,4 @@ export function allContent() {
 
     return { objects, pages, props: { site: siteConfig } };
 }
+
