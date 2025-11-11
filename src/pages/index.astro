@@ -1,7 +1,7 @@
 ﻿---
 import Layout from "../layouts/PageLayout.astro";
 import home from "../../content/pages/index.md";
-const { title, hero } = home.frontmatter;
+const { title = "Accueil", hero = {} } = (home?.frontmatter ?? {});
 ---
 <Layout {title}>
   <section style="display:grid;place-items:center;min-height:70vh;padding:4rem 1.5rem;">
@@ -14,4 +14,5 @@ const { title, hero } = home.frontmatter;
     </div>
   </section>
 </Layout>
+
 
