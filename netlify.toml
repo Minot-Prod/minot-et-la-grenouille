@@ -2,15 +2,7 @@
   command = "npm ci && npm run build"
   publish = "dist"
 
-[context.production]
-  command = "npm ci && npm run build"
+[build.environment]
+  NODE_VERSION = "20"
 
-[context.deploy-preview]
-  command = "npm ci && npm run build"
-  publish = "dist"
-
-# Plugins optionnels, supprime si Ã§a te saoule
-# [[plugins]]
-#   package = "@netlify/plugin-lighthouse"
-#   [plugins.inputs.settings]
-#     preset = "desktop"
+# Pas de context spécifiques: preview hérite EXACTEMENT de [build] (comme la prod)
