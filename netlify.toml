@@ -3,4 +3,10 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "20"[[edge_functions]]
+  path = "/_stackbit"
+  function = "stackbit-redirect"
+
+[[edge_functions]]
+  path = "/_stackbit/*"
+  function = "stackbit-redirect"
