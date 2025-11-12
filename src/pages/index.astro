@@ -1,0 +1,18 @@
+﻿---
+import Layout from "../layouts/PageLayout.astro";
+import home from "../../content/pages/index.md";
+const { title = "Accueil", hero = {} } = (home?.frontmatter ?? {});
+---
+<Layout {title}>
+  <section style="display:grid;place-items:center;min-height:70vh;padding:4rem 1.5rem;">
+    <div style="max-width:900px;text-align:center;">
+      <h1 style="font-size:clamp(2rem,6vw,4rem);margin:0.2em 0;">{hero?.heading}</h1>
+      <p style="font-size:clamp(1rem,2.5vw,1.4rem);opacity:.85;margin:0.2em 0 1.2em;">{hero?.subheading}</p>
+      <a href={hero?.ctaHref ?? "/"} style="display:inline-block;padding:.9rem 1.4rem;border:1px solid #333;text-decoration:none;">
+        {hero?.ctaText ?? "Lire"}
+      </a>
+    </div>
+  </section>
+</Layout>
+
+

@@ -1,4 +1,4 @@
-import { marked } from 'marked';
+﻿import { marked } from 'marked';
 import PlainTextRenderer from './markdown-plaintext';
 import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_INDEX_NAME_SUFFIX, ALGOLIA_ADMIN_API_KEY, buildIndexName } from './consts';
@@ -83,3 +83,4 @@ async function indexObjects(objectsToIndex) {
     await client.destroy();
     console.log(`Indexed ${response.objectIDs.length} objects`);
 }
+

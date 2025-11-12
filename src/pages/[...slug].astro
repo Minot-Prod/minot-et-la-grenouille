@@ -1,0 +1,28 @@
+﻿---
+import Layout from "../layouts/PageLayout.astro";
+
+// Mappe tous les MD de content/pages
+const pages = import.meta.glob("../../content/pages/**/*.md", { eager: true });
+
+// Slug demandé ("/about" -> "about" ou "blog/case-1")
+const slug = Astro.params.slug?.join("/") ?? "";
+
+let entry = null;
+if (slug) {
+  for (const [path, mod] of Object.entries(pages)) {
+    const name = path.split("/").pop()?.replace(".md", "");
+    if (name === slug) { entry = mod; break; }
+  }
+}
+
+// 404 soft si pas trouvé → home
+if (!entry) entry = pages["../../content/pages/index.md"];
+
+const frontmatter = entry.frontmatter ?? {};
+const Content = entry.default;
+---
+<Layout title={frontmatter.title}>
+  <article style="max-width:900px;margin:3rem auto;padding:0 1rem;line-height:1.65;">
+    <Content />
+  </article>
+</Layout>

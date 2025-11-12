@@ -4,7 +4,7 @@ import { globSync } from 'glob';
 import frontmatter from 'front-matter';
 import { allModels } from '../../sources/local/models';
 import { Config } from '../../sources/local/models/Config';
-import { getPageUrl } from './page-utils';
+import { getPageUrl } from './page-utils.js';
 
 // TODO use types?
 
@@ -108,3 +108,4 @@ export function allContent() {
 
     return { objects, pages, props: { site: siteConfig } };
 }
+

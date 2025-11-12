@@ -1,0 +1,9 @@
+{ "type": "Social",
+  "title": "Réseaux",
+  "links": [
+    { "label": "Instagram", "href": "https://instagram.com/minot", "icon": "instagram" },
+    { "label": "YouTube", "href": "https://youtube.com/@minot", "icon": "youtube" },
+    { "label": "SoundCloud", "href": "https://soundcloud.com/minot", "icon": "soundcloud" },
+    { "label": "Spotify", "href": "https://open.spotify.com/artist/...", "icon": "spotify" }
+  ]
+}

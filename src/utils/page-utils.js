@@ -1,37 +1,34 @@
-function cssClassesFromUrlPath(urlPath) {
-    const parts = urlPath
-        .replace(/^\/|\/$/g, '')
-        .split('/')
-        .filter(Boolean);
+/**
+ * Déduit l’URL d’une page (slug front-matter, page.slug, fallback chemin).
+ */
+export function getPageUrl(page) {
+  if (!page) return "/";
+  const fm = page.frontmatter ?? {};
+  const rawSlug =
+    page.slug ??
+    fm.slug ??
+    inferSlugFromPath(page.filePath ?? page._filePath ?? "");
 
-    let css = 'page';
-    return parts.map((part) => {
-        css += `-${part}`;
-        return css;
-    });
+  const slug = sanitizeSlug(rawSlug);
+  return slug ? `/${slug}` : "/";
 }
 
-function getPageUrl(page) {
-    if (!page || !page.slug) {
-        return null;
-    }
-
-    if (['PostLayout'].includes(page?.__metadata.modelName)) {
-        return `/blog${page.slug.startsWith('/') ? page.slug : `/${page.slug}`}`;
-    }
-
-    return page.slug.startsWith('/') ? page.slug : `/${page.slug}`;
-}
-
-function setEnvironmentVariables() {
-  return {
-    ...(process?.env?.URL && { URL: process.env.URL }),
+function inferSlugFromPath(p) {
+  try {
+    if (!p) return "";
+    p = String(p).replace(/\\/g, "/");
+    p = p.replace(/^.*?content\/pages\//, "");
+    p = p.replace(/\.(md|mdx)$/i, "");
+    if (p === "index") return "";
+    return p;
+  } catch {
+    return "";
   }
 }
 
-
-module.exports = {
-    cssClassesFromUrlPath,
-    getPageUrl,
-    setEnvironmentVariables
-};
+function sanitizeSlug(s) {
+  if (!s) return "";
+  s = String(s).replace(/^\/+|\/+$/g, "");
+  s = s.replace(/\/{2,}/g, "/");
+  return s;
+}
