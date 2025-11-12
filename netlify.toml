@@ -4,5 +4,3 @@
 
 [build.environment]
   NODE_VERSION = "20"
-
-# Pas de context spécifiques: preview hérite EXACTEMENT de [build] (comme la prod)
