@@ -1,11 +1,16 @@
-﻿[build]
-  command = "npm run build"
+[build]
+  command = "npm ci && npm run build"
   publish = "dist"
 
-# (optionnel) forcer Node si besoin côté CI
-[build.environment]
-  NODE_VERSION = "18"
+[context.production]
+  command = "npm ci && npm run build"
 
-# Préview (utilisé par Visual Editor)
-[context.preview]
-  command = "npm run build"
+[context.deploy-preview]
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+# Plugins optionnels, supprime si Ã§a te saoule
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
+#   [plugins.inputs.settings]
+#     preset = "desktop"
